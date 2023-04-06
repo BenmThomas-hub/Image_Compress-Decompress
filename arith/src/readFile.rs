@@ -1,4 +1,4 @@
-use array2::Array2;
+use Array2::Array2;
 use csc411_image::*;
 
 pub fn read(input: Option<String>) -> Array2<imgtype::Rgb> {
@@ -13,7 +13,7 @@ pub fn read(input: Option<String>) -> Array2<imgtype::Rgb> {
     }
 
     //creates an arr2 of the data taken in from the .pgm file
-    let mut wdth = img.widt as usize;
+    let mut wdth = img.width as usize;
     let mut hght = img.height as usize;
     let mut arr2 = Array2::<imgtype::Rgb>::from_row_major(wdth, hght, vec);
 
@@ -23,7 +23,7 @@ pub fn read(input: Option<String>) -> Array2<imgtype::Rgb> {
     if (img.height % 2) != 0 {
 
         //iterate & delete last row (OR make new arr2 with the specs)
-        for pixel in arr2.iter_row_major() - img.width() {
+        for pixel in arr2.iter_row_major() - img.width as usize {
             vec.push(pixel);
         }
         hght -= 1;
@@ -34,11 +34,11 @@ pub fn read(input: Option<String>) -> Array2<imgtype::Rgb> {
     if (img.width % 2) != 0 {
 
         //iterate & delete last row (OR make new arr2 with the specs)
-        for pixel in arr2.iter_column_major() - img.width() {
+        for pixel in arr2.iter_column_major() - img.width {
             vec.push(pixel);
         }
         wdth -= 1;
-        arr2 = Array2::<imgtype::Rgb>::from_column_major(wdth, hght, vec);
+        arr2 = Array2::<imgtype::Rgb>::from_col_major(wdth, hght, vec);
 
     }
 

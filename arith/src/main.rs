@@ -1,11 +1,9 @@
 mod readFile;
-use readFile::readFile;
+use crate::readFile::read;
 use clap::Parser;
-use array2::array2;
+use Array2::Array2;
 use csc411_image::*;
-use csc411_arith;
-
-mod readFile;
+//use csc411_arith::*;
 
 #[derive(Parser, Debug)]
 #[clap(author, version, about, long_about = None)]
@@ -31,6 +29,7 @@ fn main() {
     let args = Args::parse();
     let decompress = args.d;
     let compress = args.c;
+    let fname = args.input;
 
     let arr2 = read(fname);
 
