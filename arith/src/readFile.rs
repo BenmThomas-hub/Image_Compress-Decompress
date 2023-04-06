@@ -62,14 +62,20 @@ pub fn read(input: Option<String>) -> Array2<imgtype::Rgb> {
 
 
     //integer to float
+    /*
     let mut vec: Vec<imgtype::Rgb> = vec![];
     for pixel in arr2.iter_row_major() {
+        let mut tup: (f32, f32, f32);
+        for color in pixel {
+
+        }
         vec.push(pixel.2.clone());
     }
     
-    let arr2f = Array2::<imgtype::Rgb>::from_row_major(arr2.get_width(), arr2.get_height(), vec);;
+    let arr2f = Array2::<imgtype::Rgb>::from_row_major(arr2.get_width(), arr2.get_height(), vec);
+    */
 
 
-    return arr2f;
+    return arr2;
 
 }
