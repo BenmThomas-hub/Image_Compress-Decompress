@@ -23,7 +23,7 @@ pub fn read(input: Option<String>) -> Array2<imgtype::Rgb> {
     let mut vec2: Vec<imgtype::Rgb> = vec![];
 
     //trim height
-    if (img.height % 2) != 0 {
+    if (img.height % 2) != 0{
         end -= wdth;
 
         //iterate & delete last row (OR make new arr2 with the specs)
@@ -64,18 +64,21 @@ pub fn read(input: Option<String>) -> Array2<imgtype::Rgb> {
 
 
     //integer to float
-    /*
-    let mut vec: Vec<imgtype::Rgb> = vec![];
-    for pixel in arr2.iter_row_major() {
-        let tup: [f64; 3] = pixel.2.into();
-        vec.push(pixel.2.clone());
+    let mut vec: Vec<Rgb> = vec![];
+    for data in arr2.iter_row_major() {
+        let pixel = data.2;
+        let mut new_pixel = imgtype::Rgb{red:255,green:255, blue:255};
+        new_pixel.red = pixel.red / 255;
+        new_pixel.green = pixel.green / 255;
+        new_pixel.blue = pixel.blue / 255;
+        vec.push(new_pixel.clone());
     }
     
     let arr2f = Array2::<imgtype::Rgb>::from_row_major(arr2.get_width(), arr2.get_height(), vec);
-    */
+
     
 
 
-    return arr2;
+    return arr2f;
 
 }
