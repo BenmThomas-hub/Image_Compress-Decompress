@@ -12,35 +12,57 @@ pub fn read(input: Option<String>) -> Array2<imgtype::Rgb> {
         vec.push(pixel);
     }
 
-    //creates an arr2 of the data taken in from the .pgm file
     let mut wdth = img.width as usize;
     let mut hght = img.height as usize;
-    let mut arr2 = Array2::<imgtype::Rgb>::from_row_major(wdth, hght, vec);
 
 
     //Trims the arr2 if needed
-    let mut vec: Vec<imgtype::Rgb> = vec![];
+    let mut count = 0;
+    let mut end = wdth*hght;
+    let mut vec2: Vec<imgtype::Rgb> = vec![];
+    let mut arr2;
     if (img.height % 2) != 0 {
+        end -= wdth;
 
         //iterate & delete last row (OR make new arr2 with the specs)
-        for pixel in arr2.iter_row_major() - img.width as usize {
-            vec.push(pixel);
+        for data in vec.clone() {
+            if count == end {
+                break;
+            }
+            else {
+                vec2.push(data);
+            }
+            count += 1;
         }
         hght -= 1;
-        arr2 = Array2::<imgtype::Rgb>::from_row_major(wdth, hght, vec);
+        arr2 = Array2::<imgtype::Rgb>::from_row_major(wdth, hght, vec2);
 
     }
-    let mut vec: Vec<imgtype::Rgb> = vec![];
+
+    let mut vec2: Vec<imgtype::Rgb> = vec![];
+    let mut end = wdth*hght;
+    count = 0;
     if (img.width % 2) != 0 {
+        end -= hght;
 
         //iterate & delete last row (OR make new arr2 with the specs)
-        for pixel in arr2.iter_column_major() - img.width {
-            vec.push(pixel);
+        for data in vec.clone() {
+            if count == end {
+                break;
+            }
+            else {
+                vec2.push(data);
+            }
+            count += 1;
         }
         wdth -= 1;
-        arr2 = Array2::<imgtype::Rgb>::from_col_major(wdth, hght, vec);
+        arr2 = Array2::<imgtype::Rgb>::from_row_major(wdth, hght, vec2);
 
     }
+    else{
+        arr2 = Array2::<imgtype::Rgb>::from_row_major(wdth, hght, vec);
+    }
+
 
 
     //integer to float
