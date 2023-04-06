@@ -64,21 +64,35 @@ pub fn read(input: Option<String>) -> Array2<imgtype::Rgb> {
 
 
     //integer to float
-    let mut vec: Vec<Rgb> = vec![];
+
+    /*
+    let mut vec: Vec<_> = vec![];
     for data in arr2.iter_row_major() {
         let pixel = data.2;
-        let mut new_pixel = imgtype::Rgb{red:255,green:255, blue:255};
-        new_pixel.red = pixel.red / 255;
-        new_pixel.green = pixel.green / 255;
-        new_pixel.blue = pixel.blue / 255;
+        let mut new_pixel = i2f(pixel);
+        //new_pixel.red = pixel.red / 255;
+        //new_pixel.green = pixel.green / 255;
+        //new_pixel.blue = pixel.blue / 255;
         vec.push(new_pixel.clone());
     }
     
     let arr2f = Array2::<imgtype::Rgb>::from_row_major(arr2.get_width(), arr2.get_height(), vec);
+    */
 
     
 
 
-    return arr2f;
+    return arr2;
 
 }
+
+/*
+fn u16_2_f64 (color: f64) {
+
+}
+
+fn i2f (rgb: &Rgb) -> [f64; 3] {
+    [u16_2_f64(rgb.red.into()),u16_2_f64(rgb.green.into()),u16_2_f64(rgb.blue.into())]
+
+}
+*/
