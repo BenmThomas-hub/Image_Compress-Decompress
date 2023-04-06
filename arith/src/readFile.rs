@@ -21,6 +21,7 @@ pub fn read(input: Option<String>) -> Array2<imgtype::Rgb> {
     let mut count = 0;
     let mut end = wdth*hght;
     let mut vec2: Vec<imgtype::Rgb> = vec![];
+
     //trim height
     if (img.height % 2) != 0 {
         end -= wdth;
@@ -42,6 +43,7 @@ pub fn read(input: Option<String>) -> Array2<imgtype::Rgb> {
     let mut vec2: Vec<imgtype::Rgb> = vec![];
     let mut end = wdth*hght;
     count = 0;
+
     //trim width
     if (img.width % 2) != 0 {
         end -= hght;
@@ -65,15 +67,13 @@ pub fn read(input: Option<String>) -> Array2<imgtype::Rgb> {
     /*
     let mut vec: Vec<imgtype::Rgb> = vec![];
     for pixel in arr2.iter_row_major() {
-        let mut tup: (f32, f32, f32);
-        for color in pixel {
-
-        }
+        let tup: [f64; 3] = pixel.2.into();
         vec.push(pixel.2.clone());
     }
     
     let arr2f = Array2::<imgtype::Rgb>::from_row_major(arr2.get_width(), arr2.get_height(), vec);
     */
+    
 
 
     return arr2;
