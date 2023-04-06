@@ -14,64 +14,62 @@ pub fn read(input: Option<String>) -> Array2<imgtype::Rgb> {
 
     let mut wdth = img.width as usize;
     let mut hght = img.height as usize;
+    let mut arr2 = Array2::<imgtype::Rgb>::from_row_major(wdth, hght, vec);
 
 
     //Trims the arr2 if needed
     let mut count = 0;
     let mut end = wdth*hght;
     let mut vec2: Vec<imgtype::Rgb> = vec![];
-    let mut arr2;
+    //trim height
     if (img.height % 2) != 0 {
         end -= wdth;
 
         //iterate & delete last row (OR make new arr2 with the specs)
-        for data in vec.clone() {
+        for pixel in arr2.iter_row_major() {
             if count == end {
                 break;
             }
             else {
-                vec2.push(data);
+                vec2.push(pixel.2.clone());
             }
             count += 1;
         }
         hght -= 1;
         arr2 = Array2::<imgtype::Rgb>::from_row_major(wdth, hght, vec2);
-
     }
 
     let mut vec2: Vec<imgtype::Rgb> = vec![];
     let mut end = wdth*hght;
     count = 0;
+    //trim width
     if (img.width % 2) != 0 {
         end -= hght;
 
         //iterate & delete last row (OR make new arr2 with the specs)
-        for data in vec.clone() {
+        for pixel in arr2.iter_row_major() {
             if count == end {
                 break;
             }
             else {
-                vec2.push(data);
+                vec2.push(pixel.2.clone());
             }
             count += 1;
         }
         wdth -= 1;
         arr2 = Array2::<imgtype::Rgb>::from_row_major(wdth, hght, vec2);
-
     }
-    else{
-        arr2 = Array2::<imgtype::Rgb>::from_row_major(wdth, hght, vec);
-    }
-
 
 
     //integer to float
-    //let mut vec: Vec<imgtype::Rgb> = vec![];
-    //for pixel in arr2.iter_row_major() {
-    //    let float_pixel = pixel / (255,255,255);
-    //    vec.push(float_pixel);
-    //}
+    let mut vec: Vec<imgtype::Rgb> = vec![];
+    for pixel in arr2.iter_row_major() {
+        vec.push(pixel.2.clone());
+    }
+    
+    let arr2f = Array2::<imgtype::Rgb>::from_row_major(arr2.get_width(), arr2.get_height(), vec);;
 
-    return arr2;
+
+    return arr2f;
 
 }

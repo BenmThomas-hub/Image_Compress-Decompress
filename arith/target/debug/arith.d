@@ -1,0 +1,1 @@
+C:\Users\benmt\CSC411\arith\arith\target\debug\arith.exe: C:\Users\benmt\CSC411\arith\arith\src\main.rs C:\Users\benmt\CSC411\arith\arith\src\readFile.rs C:\Users\benmt\CSC411\arith\array2\src\lib.rs C:\Users\benmt\CSC411\arith\bitpack\src\bitpack.rs C:\Users\benmt\CSC411\arith\bitpack\src\lib.rs
