@@ -1,4 +1,6 @@
 mod readFile;
+mod compress;
+use crate::compress::*;
 use crate::readFile::read;
 use clap::Parser;
 use Array2::Array2;
@@ -22,15 +24,18 @@ struct Args {
 
 fn main() {
 
-
-    /*
-        command example (for now) : cargo run rotation90 row-major f_original.ppm rot_fin.ppm **
-    */
     let args = Args::parse();
     let decompress = args.d;
     let compress = args.c;
     let fname = args.input;
 
     let arr2 = read(fname);
+
+    if  decompress == true { //good
+        //decomp function
+    }
+    else if  compress == true { //good
+        //yuh = compress(arr2);
+    }
 
 }

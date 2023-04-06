@@ -1,26 +1,36 @@
 use Array2::Array2;
 use csc411_image::*;
 
-pub fn read(input: Option<String>) -> Array2<imgtype::Rgb> {
+#[derive(Clone)]
+
+pub struct RgbFloat{
+    red: f32,
+    green: f32,
+    blue: f32
+}
+
+pub fn read(input: Option<String>) -> Array2<RgbFloat> {
     let copy = input.clone();
     let img = RgbImage::read(copy.as_deref()).unwrap();
 
-    let mut vec: Vec<imgtype::Rgb> = vec![];
+    let mut rgb_f32_vec: Vec<RgbFloat> = vec![];
     
-    //checks whether or not the pixel values are between 1 and 9
+    //converts RGB integers to RGB floats
     for pixel in img.pixels {
-        vec.push(pixel);
+        let new_pix: RgbFloat = RgbFloat {red:(pixel.red as f32/255 as f32), green:(pixel.green as f32 / 255 as f32), blue:(pixel.blue as f32/ 255 as f32)};
+        rgb_f32_vec.push(new_pix);
     }
+    
 
     let mut wdth = img.width as usize;
     let mut hght = img.height as usize;
-    let mut arr2 = Array2::<imgtype::Rgb>::from_row_major(wdth, hght, vec);
+    let mut arr2 = Array2::<RgbFloat>::from_row_major(wdth, hght, rgb_f32_vec);
 
 
     //Trims the arr2 if needed
     let mut count = 0;
     let mut end = wdth*hght;
-    let mut vec2: Vec<imgtype::Rgb> = vec![];
+    let mut vec2: Vec<RgbFloat> = vec![];
 
     //trim height
     if (img.height % 2) != 0{
@@ -37,10 +47,10 @@ pub fn read(input: Option<String>) -> Array2<imgtype::Rgb> {
             count += 1;
         }
         hght -= 1;
-        arr2 = Array2::<imgtype::Rgb>::from_row_major(wdth, hght, vec2);
+        arr2 = Array2::<RgbFloat>::from_row_major(wdth, hght, vec2);
     }
 
-    let mut vec2: Vec<imgtype::Rgb> = vec![];
+    let mut vec2: Vec<RgbFloat> = vec![];
     let mut end = wdth*hght;
     count = 0;
 
@@ -59,40 +69,9 @@ pub fn read(input: Option<String>) -> Array2<imgtype::Rgb> {
             count += 1;
         }
         wdth -= 1;
-        arr2 = Array2::<imgtype::Rgb>::from_row_major(wdth, hght, vec2);
+        arr2 = Array2::<RgbFloat>::from_row_major(wdth, hght, vec2);
     }
-
-
-    //integer to float
-
-    /*
-    let mut vec: Vec<_> = vec![];
-    for data in arr2.iter_row_major() {
-        let pixel = data.2;
-        let mut new_pixel = i2f(pixel);
-        //new_pixel.red = pixel.red / 255;
-        //new_pixel.green = pixel.green / 255;
-        //new_pixel.blue = pixel.blue / 255;
-        vec.push(new_pixel.clone());
-    }
-    
-    let arr2f = Array2::<imgtype::Rgb>::from_row_major(arr2.get_width(), arr2.get_height(), vec);
-    */
-
-    
-
 
     return arr2;
 
 }
-
-/*
-fn u16_2_f64 (color: f64) {
-
-}
-
-fn i2f (rgb: &Rgb) -> [f64; 3] {
-    [u16_2_f64(rgb.red.into()),u16_2_f64(rgb.green.into()),u16_2_f64(rgb.blue.into())]
-
-}
-*/
