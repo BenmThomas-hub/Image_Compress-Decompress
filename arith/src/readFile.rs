@@ -1,5 +1,6 @@
 use Array2::Array2;
 use csc411_image::*;
+use csc411_rpregio;
 
 #[derive(Clone)]
 
@@ -9,11 +10,18 @@ pub struct RgbFloat{
     blue: f32
 }
 
-pub fn read(input: Option<String>) -> Array2<RgbFloat> {
-    let copy = input.clone();
-    let img = RgbImage::read(copy.as_deref()).unwrap();
+pub fn read(input: Option<String>) -> Vec<imgtype::Rgb> {
+    let (compressed_data, width, height) = csc411_rpegio::input_rpeg_data(input).unwrap();
 
-    let mut rgb_f32_vec: Vec<RgbFloat> = vec![];
+    let mut vec: Vec<imgtype::Rgb> = vec![];
+
+    for pixel in img.pixels {
+        vec.push(pixel);
+    }
+
+    return (compressed_data, width, height);
+
+    let mut rgb_f32_vec: Vec<imgtype::Rgb> = vec![];
     
     //converts RGB integers to RGB floats
     for pixel in img.pixels {

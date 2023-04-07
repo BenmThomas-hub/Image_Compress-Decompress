@@ -69,6 +69,7 @@ dependencies = [
  "bitpack",
  "clap",
  "csc411_image",
+ "csc411_rpegio",
 ]
 
 [[package]]
@@ -234,6 +235,12 @@ checksum = "7b2318b10191331bfac8bd383ce125aa420f86e52fad7076621b4dd321f9e759"
 dependencies = [
  "image",
 ]
+
+[[package]]
+name = "csc411_rpegio"
+version = "0.4.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c3f68892c1d3fd172eb8d3f2c75b6b57cdcd54c940b383a3e6779f9970044f6b"
 
 [[package]]
 name = "deflate"
