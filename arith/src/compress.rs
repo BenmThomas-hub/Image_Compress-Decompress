@@ -3,7 +3,11 @@ use Array2::Array2;
 use csc411_image::*;
 use crate::compute;
 
-pub fn compress (arr2: Array2::<RgbFloat>) {
+pub fn compress_read (input: Option<String>) {
+    //read
+    let img = read(input);
+    //i2f and trim
+    let arr2 = rgb_to_rgbf(img);
 
     //rgb2vid
     let vid_arr2 = to_video(arr2);
@@ -18,15 +22,22 @@ pub fn compress (arr2: Array2::<RgbFloat>) {
 
 }
 
-fn rgb_to_rgbf( Vec)
-let mut rgb_f32_vec: Vec<imgtype::Rgb> = vec![];
+fn read(input: Option<String>) -> RGBimg {
+    let copy = input.clone();
+    let img = RgbImage::read(copy.as_deref()).unwrap();
+
+    return img;
+}
+
+fn rgb_to_rgbf(img: RgbImage) -> Array2(RgbFloat){
+
+    let mut rgb_f32_vec: Vec<imgtype::Rgb> = vec![];
     
     //converts RGB integers to RGB floats
     for pixel in img.pixels {
         let new_pix: RgbFloat = RgbFloat {red:(pixel.red as f32/255 as f32), green:(pixel.green as f32 / 255 as f32), blue:(pixel.blue as f32/ 255 as f32)};
         rgb_f32_vec.push(new_pix);
     }
-    
 
     let mut wdth = img.width as usize;
     let mut hght = img.height as usize;
@@ -77,3 +88,6 @@ let mut rgb_f32_vec: Vec<imgtype::Rgb> = vec![];
         wdth -= 1;
         arr2 = Array2::<RgbFloat>::from_row_major(wdth, hght, vec2);
     }
+
+    return arr2;
+}

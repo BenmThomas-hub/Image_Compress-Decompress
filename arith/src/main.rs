@@ -1,7 +1,6 @@
 mod readFile;
 mod compress;
 use crate::compress::*;
-use crate::readFile::read;
 use clap::Parser;
 use Array2::Array2;
 use csc411_image::*;
@@ -29,13 +28,14 @@ fn main() {
     let compress = args.c;
     let fname = args.input;
 
-    let arr2 = read(fname);
+    let data = read(fname);
 
-    if  decompress == true { //good
+    if  decompress == true {
         //decomp function
     }
-    else if  compress == true { //good
-        //yuh = compress(arr2);
+    else if  compress == true {
+        let data = compress_read(fname);
+        //yuh = compress(data);
     }
 
 }
