@@ -25,12 +25,10 @@ pub fn decompress_read (input: Option::<String>) {
     let mut arr2_vid = Array2::<video_pixel>::single_val(width, height, video_pixel{y: 0.0, pB: 0.0, pR: 0.0});
     //get next chunk in arr2 & set pixels
     let mut count = 0;
-    for _chunk in arr2_vid.get_chunks() {
-        for i in 0..height/2{
-            for j in 0..width/2{
-                arr2_vid.set_square(j*2, i*2, vec2[count..count+3].to_vec());
-                count += 4;
-            }
+    for i in 0..height/2{
+        for j in 0..width/2{
+            arr2_vid.set_square(j*2, i*2, vec2[count..count+3].to_vec());
+            count += 4;
         }
     }
 
@@ -51,7 +49,7 @@ fn write(rot: Array2<imgtype::Rgb>) {
     ppm.write(None).unwrap();
 }
 
-fn bitunpacking (word: [u8; 4]) -> Vec<f32> {
+fn bitunpacking(word: [u8; 4]) -> Vec<f32> {
 
     //pull in opposite order
     let new_word = u32::from_be_bytes(word) as u64;
