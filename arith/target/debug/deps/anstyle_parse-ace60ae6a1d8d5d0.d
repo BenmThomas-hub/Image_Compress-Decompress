@@ -1,0 +1,11 @@
+/Users/reidmorin/411_Projects/arith/arith/target/debug/deps/anstyle_parse-ace60ae6a1d8d5d0.rmeta: /Users/reidmorin/.cargo/registry/src/github.com-1ecc6299db9ec823/anstyle-parse-0.1.1/src/lib.rs /Users/reidmorin/.cargo/registry/src/github.com-1ecc6299db9ec823/anstyle-parse-0.1.1/src/params.rs /Users/reidmorin/.cargo/registry/src/github.com-1ecc6299db9ec823/anstyle-parse-0.1.1/src/state/mod.rs /Users/reidmorin/.cargo/registry/src/github.com-1ecc6299db9ec823/anstyle-parse-0.1.1/src/state/definitions.rs /Users/reidmorin/.cargo/registry/src/github.com-1ecc6299db9ec823/anstyle-parse-0.1.1/src/state/table.rs
+
+/Users/reidmorin/411_Projects/arith/arith/target/debug/deps/libanstyle_parse-ace60ae6a1d8d5d0.rlib: /Users/reidmorin/.cargo/registry/src/github.com-1ecc6299db9ec823/anstyle-parse-0.1.1/src/lib.rs /Users/reidmorin/.cargo/registry/src/github.com-1ecc6299db9ec823/anstyle-parse-0.1.1/src/params.rs /Users/reidmorin/.cargo/registry/src/github.com-1ecc6299db9ec823/anstyle-parse-0.1.1/src/state/mod.rs /Users/reidmorin/.cargo/registry/src/github.com-1ecc6299db9ec823/anstyle-parse-0.1.1/src/state/definitions.rs /Users/reidmorin/.cargo/registry/src/github.com-1ecc6299db9ec823/anstyle-parse-0.1.1/src/state/table.rs
+
+/Users/reidmorin/411_Projects/arith/arith/target/debug/deps/anstyle_parse-ace60ae6a1d8d5d0.d: /Users/reidmorin/.cargo/registry/src/github.com-1ecc6299db9ec823/anstyle-parse-0.1.1/src/lib.rs /Users/reidmorin/.cargo/registry/src/github.com-1ecc6299db9ec823/anstyle-parse-0.1.1/src/params.rs /Users/reidmorin/.cargo/registry/src/github.com-1ecc6299db9ec823/anstyle-parse-0.1.1/src/state/mod.rs /Users/reidmorin/.cargo/registry/src/github.com-1ecc6299db9ec823/anstyle-parse-0.1.1/src/state/definitions.rs /Users/reidmorin/.cargo/registry/src/github.com-1ecc6299db9ec823/anstyle-parse-0.1.1/src/state/table.rs
+
+/Users/reidmorin/.cargo/registry/src/github.com-1ecc6299db9ec823/anstyle-parse-0.1.1/src/lib.rs:
+/Users/reidmorin/.cargo/registry/src/github.com-1ecc6299db9ec823/anstyle-parse-0.1.1/src/params.rs:
+/Users/reidmorin/.cargo/registry/src/github.com-1ecc6299db9ec823/anstyle-parse-0.1.1/src/state/mod.rs:
+/Users/reidmorin/.cargo/registry/src/github.com-1ecc6299db9ec823/anstyle-parse-0.1.1/src/state/definitions.rs:
+/Users/reidmorin/.cargo/registry/src/github.com-1ecc6299db9ec823/anstyle-parse-0.1.1/src/state/table.rs:

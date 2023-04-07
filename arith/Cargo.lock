@@ -67,7 +67,9 @@ version = "0.1.0"
 dependencies = [
  "Array2",
  "bitpack",
+ "clamp",
  "clap",
+ "csc411_arith",
  "csc411_image",
  "csc411_rpegio",
 ]
@@ -111,6 +113,12 @@ name = "cfg-if"
 version = "1.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
+
+[[package]]
+name = "clamp"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b0113a8ae379a061c89a71d57a809439f5ce550b6a76063ab5ba2b1cb180971f"
 
 [[package]]
 name = "clap"
@@ -226,6 +234,12 @@ checksum = "3c063cd8cc95f5c377ed0d4b49a4b21f632396ff690e8470c29b3359b346984b"
 dependencies = [
  "cfg-if",
 ]
+
+[[package]]
+name = "csc411_arith"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5e55476e92e0c58adf99664065b6ba4a0498f8b6e06a7bdbf691726653852a8a"
 
 [[package]]
 name = "csc411_image"

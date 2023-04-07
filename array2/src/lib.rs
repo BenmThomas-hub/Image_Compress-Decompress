@@ -1,4 +1,5 @@
 #[derive(Clone)]
+
 pub struct Array2<T: Clone> {
     width: usize,
     height: usize,
@@ -26,7 +27,7 @@ impl<T: Clone> Array2<T> {
         let mut chunks = vec![];
         for i in 0..self.height/2{
             for j in 0..self.width/2{
-                chunks.push(self.iterate_square(j, i));
+                chunks.push(self.iterate_square(j*2, i*2));
             }
         }
         return chunks.into_iter();
@@ -40,6 +41,17 @@ impl<T: Clone> Array2<T> {
             }
         }
         return pixels;
+    }
+
+
+    pub fn set_square(&mut self, col: usize, row:usize, pixels: Vec<T>) -> (){
+        let mut count = 0;
+        for i in row..row+1{
+            for j in col..col+1{
+                self.set_index(i as usize, j as usize, pixels[count].clone());
+                count += 1;
+            }
+        }
     }
 
     pub fn get_height(&self) -> usize{

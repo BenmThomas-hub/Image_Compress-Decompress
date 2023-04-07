@@ -5,9 +5,9 @@ use csc411_image::*;
 #[derive(Clone)]
 
 pub struct RgbFloat{
-    red: f32,
-    green: f32,
-    blue: f32
+    pub red: f32,
+    pub green: f32,
+    pub blue: f32
 }
 
 pub fn read(input: Option<String>) {
