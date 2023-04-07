@@ -2,6 +2,7 @@ use crate::readFile::RgbFloat;
 use Array2::Array2;
 use csc411_image::*;
 use crate::compute;
+use csc411_rpregio;
 
 pub fn compress_read (input: Option<String>) {
     //read
@@ -16,10 +17,13 @@ pub fn compress_read (input: Option<String>) {
         //compute word & get coeff
     }
     //bitpack
-
+    
     //set index
+    let compressed_data = arr2.2;
+    let width = arr2.get_width();
+    let height = arr2.get_height();
 
-
+    csc411_rpegio::output_rpeg_data(&compressed_data, width, height).unwrap();
 }
 
 fn read(input: Option<String>) -> RGBimg {

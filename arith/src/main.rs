@@ -28,14 +28,11 @@ fn main() {
     let compress = args.c;
     let fname = args.input;
 
-    let data = read(fname);
-
     if  decompress == true {
-        //decomp function
+        decompress_read(fname);
     }
     else if  compress == true {
-        let data = compress_read(fname);
-        //yuh = compress(data);
+        compress_read(fname);
     }
 
 }
