@@ -122,6 +122,6 @@ fn bitpacking (coeff: (f32, f32, f32, f32, usize, usize)) -> [u8; 4] {
     //println!("{:?}, {:?}, {:?}, {:?}, {:?}, {:?}", a, b, c, d, p_b, p_r);
     word = p_r.unwrap()+p_b.unwrap()+d.unwrap()+c.unwrap()+b.unwrap()+a.unwrap();
     let bit: [u8; 4] = (word as u32).to_be_bytes();
-    println!("{}, {:?}", word, bit);
+    //println!("{}, {:?}", word, bit);
     return bit;
 }

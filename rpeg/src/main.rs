@@ -28,8 +28,8 @@ fn main() {
     let fname = args.input;
 
     if  decompress == true {
-        //let (compressed_data, width, height) = csc411_rpegio::input_rpeg_data(fname).unwrap();
-        //decompress_read(compressed_data, width, height);
+        let (compressed_data, width, height) = csc411_rpegio::input_rpeg_data(fname).unwrap();
+        decompress_read(compressed_data, width, height);
     }
     else if  compress == true {
         let (output, width, height) = compress_read(fname);
