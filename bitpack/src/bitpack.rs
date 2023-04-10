@@ -28,10 +28,10 @@ pub fn fitsu(n: u64, width: u64) -> bool {
 /// * `width`: the width of a bit field
 /// * `lsb`: the least-significant bit of the bit field
 pub fn gets(word: u64, width: u64, lsb: u64) -> i64 {
-    if ((word<<lsb)>>(62)) as u64 == 1{
-        return -1*(word << lsb >> (64 - width)) as i64;
+    if (word<<(64-lsb-width)>>(63)) as u64 == 1{
+        return (-1*2_i64.pow((width-1).try_into().unwrap()) as i64)+(word << (65-lsb-width) >> (64 - width-1+lsb)) as i64;
     }
-    return (word << lsb >> (64 - width)) as i64;
+    return (word << (64-lsb-width) >> (64 - width)) as i64;
 }
 
 /// Retrieve an unsigned value from `word`, represented by `width` bits
@@ -42,7 +42,7 @@ pub fn gets(word: u64, width: u64, lsb: u64) -> i64 {
 /// * `width`: the width of a bit field
 /// * `lsb`: the least-significant bit of the bit field
 pub fn getu(word: u64, width: u64, lsb: u64) -> u64 {
-    return (word << lsb >> (64 - width)) as u64;
+    return (word << 64-lsb-width >> (64 - width)) as u64;
 }
 
 /// Return a modified version of the unsigned `word`,
@@ -60,7 +60,7 @@ pub fn newu(word: u64, width: u64, lsb: u64, value: u64) -> Option<u64> {
     if !fitsu(value, width){
         None
     }else{
-        Some((value << (64-lsb-width))|word)
+        Some((value << lsb)|word)
     }
 }
 
@@ -80,7 +80,7 @@ pub fn news(word: u64, width: u64, lsb: u64, value: i64) -> Option<u64> {
         None
     }else{
         let base = ((1 as i128) << width) -1;
-        let num = (((value as i128) & (base as i128)) << (64-lsb-width)) as u64;
+        let num = (((value as i128) & (base as i128)) << lsb) as u64;
         Some(num|word)
     }
 }
@@ -101,17 +101,17 @@ mod tests {
     #[test]
     fn s_get(){
         let num: i64 = 9;
-        assert_eq!(num, gets(18, 4, 59))
+        assert_eq!(num, gets(36, 5, 2))
     }
     #[test]
     fn u_get(){
         let num: u64 = 9;
-        assert_eq!(num, getu(18, 4, 59))
+        assert_eq!(num, getu(36, 4, 2))
     }
     #[test]
     fn signed() {
-        let result: i64 = 18;
-        assert_eq!(result, gets(news(0, 5, 12, 18).unwrap(), 5, 12));
+        let result: i64 = 9;
+        assert_eq!(result, gets(news(0, 5, 2, 9).unwrap(), 5, 2));
     }
     #[test]
     fn unsigned() {
@@ -120,12 +120,12 @@ mod tests {
     }
     #[test]
     fn s_new(){
-        let n: u64 = 18;
-        assert_eq!(n, news(0, 4, 59, 9).unwrap())
+        let n: u64 = 36;
+        assert_eq!(n, news(0, 4, 2, 9).unwrap())
     }
     #[test]
     fn u_new(){
-        let n: u64 = 18;
-        assert_eq!(n, newu(0, 4, 59, 9).unwrap())
+        let n: u64 = 36;
+        assert_eq!(n, newu(0, 4, 2, 9).unwrap())
     }
 }
