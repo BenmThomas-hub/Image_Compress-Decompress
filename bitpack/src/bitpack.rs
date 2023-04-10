@@ -5,8 +5,8 @@
 /// * `n`: A signed integer value
 /// * `width`: the width of a bit field
 pub fn fitss(n: i64, width: u64) -> bool {
-    let max: u128 = 1 << width-1;
-    let min = -1*((1 as u128) << width-1) as i128;
+    let max: u128 = 1 << width+1;
+    let min = -1*((1 as u128) << width+1) as i128;
     return max as i128 >= n as i128 && n as i128 >= min;
 }
 
@@ -16,7 +16,7 @@ pub fn fitss(n: i64, width: u64) -> bool {
 /// * `n`: An usigned integer value
 /// * `width`: the width of a bit field
 pub fn fitsu(n: u64, width: u64) -> bool {
-    let max: u128 = 1 << width;
+    let max: u128 = (1 << width+1) -1;
     return max>=n as u128;
 }
 
@@ -60,7 +60,7 @@ pub fn newu(word: u64, width: u64, lsb: u64, value: u64) -> Option<u64> {
     if !fitsu(value, width){
         None
     }else{
-        Some((value << lsb)|word)
+        Some((value << (64-lsb-width))|word)
     }
 }
 
@@ -80,7 +80,52 @@ pub fn news(word: u64, width: u64, lsb: u64, value: i64) -> Option<u64> {
         None
     }else{
         let base = ((1 as i128) << width) -1;
-        let num = (((value as i128) & (base as i128)) << lsb) as u64;
+        let num = (((value as i128) & (base as i128)) << (64-lsb-width)) as u64;
         Some(num|word)
+    }
+}
+#[cfg(test)]
+mod tests {
+    use crate::bitpack::{gets, news, getu, newu, fitsu};
+
+    use super::fitss;
+
+    #[test]
+    fn s_fit(){
+        assert_eq!(true, fitss(18, 5))
+    }
+    #[test]
+    fn u_fit(){
+        assert_eq!(true, fitsu(18, 5))
+    }
+    #[test]
+    fn s_get(){
+        let num: i64 = 9;
+        assert_eq!(num, gets(18, 4, 59))
+    }
+    #[test]
+    fn u_get(){
+        let num: u64 = 9;
+        assert_eq!(num, getu(18, 4, 59))
+    }
+    #[test]
+    fn signed() {
+        let result: i64 = 18;
+        assert_eq!(result, gets(news(0, 5, 12, 18).unwrap(), 5, 12));
+    }
+    #[test]
+    fn unsigned() {
+        let result: u64 = 18;
+        assert_eq!(result, getu(newu(0, 5, 12, 18).unwrap(), 5, 12));
+    }
+    #[test]
+    fn s_new(){
+        let n: u64 = 18;
+        assert_eq!(n, news(0, 4, 59, 9).unwrap())
+    }
+    #[test]
+    fn u_new(){
+        let n: u64 = 18;
+        assert_eq!(n, newu(0, 4, 59, 9).unwrap())
     }
 }
