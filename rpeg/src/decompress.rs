@@ -8,6 +8,10 @@ pub fn decompress_read (compressed_data: Vec<[u8; 4]>, width: usize, height: usi
     //read in the input
     //let (compressed_data, width, height) = csc411_rpegio::input_rpeg_data(input).unwrap();
 
+    let width = width * 2;
+    let height = height * 2;
+
+
     let mut vec2: Vec<VideoPixel> = vec![];
 
     //32bit chunk iterator
@@ -45,7 +49,7 @@ fn write(rot: Array2<imgtype::Rgb>) {
     }
 
     let ppm = RgbImage{pixels: vec, width: rot.get_width() as u32, height: rot.get_height() as u32, denominator: 255};
-    ppm.write(None).unwrap();
+    ppm.write(std::option::Option::Some("output.ppm")).unwrap();
 }
 
 fn bitunpacking(word: [u8; 4]) -> Vec<f32> {

@@ -16,9 +16,9 @@ pub fn compress_read (input: Option<String>) -> (Vec<[u8; 4]>, usize, usize) {
     let vid_arr2 = to_video(arr2);
 
     //pack 2x2 into word
-    let mut compressed_data: Vec<[u8; 4]> = vec![];
+    let mut compressed_data: Vec<[u8; 4]> = Vec::new();
     for chunk in vid_arr2.get_chunks() {
-        let coeff = get_coeff(chunk);//compute word & get coeff
+        let coeff = get_coeff(chunk); //compute word & get coeff
         let bit = bitpacking(coeff);
         compressed_data.push(bit);
     }
@@ -30,14 +30,7 @@ pub fn compress_read (input: Option<String>) -> (Vec<[u8; 4]>, usize, usize) {
 
     return (compressed_data, width, height);
 }
-/*
-fn wrt(data: Vec<[u8; 4]>) -> std::io::Result<()>{
-    //let mut file = File::create("test.rpeg")?;
-    //file::write(data)?;
-    write("test.rpeg", data.into_iter().collect::<[u8]>());
-    Ok(())
-}
-*/
+
 fn read(input: Option<String>) -> csc411_image::RgbImage {
     let copy = input.clone();
     let img = RgbImage::read(copy.as_deref()).unwrap();
@@ -120,7 +113,7 @@ fn bitpacking (coeff: (f32, f32, f32, f32, usize, usize)) -> [u8; 4] {
     let b = news(word, 5, 18, (coeff.1 * 50.0) as i64);
     let a = newu(word, 9, 23, (coeff.0 * 511.0) as u64);
     //println!("{:?}, {:?}, {:?}, {:?}, {:?}, {:?}", a, b, c, d, p_b, p_r);
-    word = p_r.unwrap()+p_b.unwrap()+d.unwrap()+c.unwrap()+b.unwrap()+a.unwrap();
+    word = p_r.unwrap() | p_b.unwrap() | d.unwrap() | c.unwrap() | b.unwrap() | a.unwrap();
     let bit: [u8; 4] = (word as u32).to_be_bytes();
     //println!("{}, {:?}", word, bit);
     return bit;

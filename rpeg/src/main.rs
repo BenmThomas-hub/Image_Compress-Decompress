@@ -12,19 +12,19 @@ use csc411_rpegio;
 struct Args {
     input: Option<String>,
 
-    #[clap(long = "d")]
-    d: bool,
+    #[clap(short, long)]
+    decompress: bool,
     
-    #[clap(long = "c")]
-    c: bool,
+    #[clap(short, long)]
+    compress: bool,
 
 }
 
 fn main() {
 
     let args = Args::parse();
-    let decompress = args.d;
-    let compress = args.c;
+    let decompress = args.decompress;
+    let compress = args.compress;
     let fname = args.input;
 
     if  decompress == true {
@@ -34,7 +34,7 @@ fn main() {
     else if  compress == true {
         let (output, width, height) = compress_read(fname);
         csc411_rpegio::output_rpeg_data(&output, width, height).unwrap();
-        //decompress_read(output, width, height);
+        decompress_read(output, width, height);
     }
 
 }

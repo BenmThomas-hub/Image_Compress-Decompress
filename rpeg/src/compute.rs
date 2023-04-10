@@ -54,7 +54,7 @@ pub fn get_coeff(pixels: Vec<VideoPixel>) -> (f32, f32, f32, f32, usize, usize){
     let pb_avg: f32 = (pixels[0].p_b + pixels[1].p_b + pixels[2].p_b + pixels[3].p_b)/4.0;
     let pr_avg: f32 = (pixels[0].p_r + pixels[1].p_r + pixels[2].p_r + pixels[3].p_r)/4.0;
     //println!("{}, {}, {}, {}, {}, {}", a, b,c,d,pBavg,pRavg);
-    return (a,b,c,d, csc411_arith::index_of_chroma(pb_avg), csc411_arith::index_of_chroma(pr_avg))
+    return (a,b,c,d, csc411_arith::index_of_chroma(pb_avg), csc411_arith::index_of_chroma(pr_avg));
 }
 
 pub fn get_ys(coefficients: (f32, f32, f32, f32)) -> Vec<f32>{
