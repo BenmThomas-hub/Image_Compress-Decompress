@@ -50,9 +50,14 @@ fn write(rot: Array2<imgtype::Rgb>) {
 }
 
 fn bitunpacking(word: [u8; 4]) -> Vec<f32> {
-
+    let mut update_word: [u8; 4] = [0, 0, 0, 0];
+    let mut count = 0;
+    for i in word{
+        update_word[count] = i.reverse_bits();
+        count += 1;
+    }
     //pull in opposite order
-    let new_word = u32::from_be_bytes(word) as u64;
+    let new_word = u32::from_be_bytes(update_word) as u64;
 
     let p_r = getu(new_word, 4, 0) as usize;
     let p_b = getu(new_word, 4, 4)as usize;
