@@ -47,10 +47,10 @@ fn videoto_rgb(pixel: VideoPixel) -> imgtype::Rgb{
 }
 
 pub fn get_coeff(pixels: Vec<VideoPixel>) -> (f32, f32, f32, f32, usize, usize){
-    let a: f32 = (pixels[3].y + pixels[2].y + pixels[1].y + pixels[0].y)/4.0_f32.clamp(0.0, 1.0);
-    let b: f32 = (pixels[3].y + pixels[2].y - pixels[1].y - pixels[0].y)/4.0_f32.clamp(-0.3, 0.3);
-    let c: f32 = (pixels[3].y - pixels[2].y + pixels[1].y - pixels[0].y)/4.0_f32.clamp(-0.3, 0.3);
-    let d: f32 = (pixels[3].y - pixels[2].y - pixels[1].y + pixels[0].y)/4.0_f32.clamp(-0.3, 0.3);
+    let a: f32 = ((pixels[3].y + pixels[2].y + pixels[1].y + pixels[0].y)/4.0_f32).clamp(0.0, 1.0);
+    let b: f32 = ((pixels[3].y + pixels[2].y - pixels[1].y - pixels[0].y)/4.0_f32).clamp(-0.3, 0.3);
+    let c: f32 = ((pixels[3].y - pixels[2].y + pixels[1].y - pixels[0].y)/4.0_f32).clamp(-0.3, 0.3);
+    let d: f32 = ((pixels[3].y - pixels[2].y - pixels[1].y + pixels[0].y)/4.0_f32).clamp(-0.3, 0.3);
     let pb_avg: f32 = (pixels[0].p_b + pixels[1].p_b + pixels[2].p_b + pixels[3].p_b)/4.0;
     let pr_avg: f32 = (pixels[0].p_r + pixels[1].p_r + pixels[2].p_r + pixels[3].p_r)/4.0;
     //println!("{}, {}, {}, {}, {}, {}", a, b,c,d,pBavg,pRavg);

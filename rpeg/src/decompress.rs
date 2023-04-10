@@ -1,13 +1,12 @@
 use rpeg::compute::*;
 use array2::Array2;
 use csc411_image::*;
-use csc411_rpegio;
 use bitpack::bitpack::*;
 
-pub fn decompress_read (input: Option::<String>) {
+pub fn decompress_read (compressed_data: Vec<[u8; 4]>, width: usize, height: usize) {
 
     //read in the input
-    let (compressed_data, width, height) = csc411_rpegio::input_rpeg_data(input).unwrap();
+    //let (compressed_data, width, height) = csc411_rpegio::input_rpeg_data(input).unwrap();
 
     let mut vec2: Vec<VideoPixel> = vec![];
 

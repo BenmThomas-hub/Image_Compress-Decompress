@@ -119,9 +119,9 @@ fn bitpacking (coeff: (f32, f32, f32, f32, usize, usize)) -> [u8; 4] {
     let c = news(word, 5, 13, (coeff.2 * 50.0) as i64);
     let b = news(word, 5, 18, (coeff.1 * 50.0) as i64);
     let a = newu(word, 9, 23, (coeff.0 * 511.0) as u64);
-    //println!("{}, {}, {}, {}, {}, {}", a.unwrap(), b.unwrap(), c.unwrap(), d.unwrap(), pB.unwrap(), pR.unwrap());
+    //println!("{:?}, {:?}, {:?}, {:?}, {:?}, {:?}", a, b, c, d, p_b, p_r);
     word = p_r.unwrap()+p_b.unwrap()+d.unwrap()+c.unwrap()+b.unwrap()+a.unwrap();
     let bit: [u8; 4] = (word as u32).to_be_bytes();
-    //println!("{}, {:?}", word, bit);
+    println!("{}, {:?}", word, bit);
     return bit;
 }
