@@ -1,0 +1,13 @@
+C:\Users\benmt\CSC411\arith\rpeg\target\release\deps\gif-22308104259013c5.rmeta: C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\gif-0.11.4\src\lib.rs C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\gif-0.11.4\src\traits.rs C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\gif-0.11.4\src\common.rs C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\gif-0.11.4\src\reader\mod.rs C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\gif-0.11.4\src\reader\decoder.rs C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\gif-0.11.4\src\encoder.rs C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\gif-0.11.4\src\../README.md
+
+C:\Users\benmt\CSC411\arith\rpeg\target\release\deps\libgif-22308104259013c5.rlib: C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\gif-0.11.4\src\lib.rs C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\gif-0.11.4\src\traits.rs C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\gif-0.11.4\src\common.rs C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\gif-0.11.4\src\reader\mod.rs C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\gif-0.11.4\src\reader\decoder.rs C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\gif-0.11.4\src\encoder.rs C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\gif-0.11.4\src\../README.md
+
+C:\Users\benmt\CSC411\arith\rpeg\target\release\deps\gif-22308104259013c5.d: C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\gif-0.11.4\src\lib.rs C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\gif-0.11.4\src\traits.rs C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\gif-0.11.4\src\common.rs C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\gif-0.11.4\src\reader\mod.rs C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\gif-0.11.4\src\reader\decoder.rs C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\gif-0.11.4\src\encoder.rs C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\gif-0.11.4\src\../README.md
+
+C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\gif-0.11.4\src\lib.rs:
+C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\gif-0.11.4\src\traits.rs:
+C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\gif-0.11.4\src\common.rs:
+C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\gif-0.11.4\src\reader\mod.rs:
+C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\gif-0.11.4\src\reader\decoder.rs:
+C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\gif-0.11.4\src\encoder.rs:
+C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\gif-0.11.4\src\../README.md:

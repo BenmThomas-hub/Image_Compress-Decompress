@@ -1,0 +1,11 @@
+C:\Users\benmt\CSC411\arith\rpeg\target\release\deps\anstyle_wincon-c687f2ede4f540d9.rmeta: C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\anstyle-wincon-0.2.0\src\lib.rs C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\anstyle-wincon-0.2.0\src\console.rs C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\anstyle-wincon-0.2.0\src\lockable.rs C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\anstyle-wincon-0.2.0\src\stream.rs C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\anstyle-wincon-0.2.0\src\windows.rs
+
+C:\Users\benmt\CSC411\arith\rpeg\target\release\deps\libanstyle_wincon-c687f2ede4f540d9.rlib: C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\anstyle-wincon-0.2.0\src\lib.rs C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\anstyle-wincon-0.2.0\src\console.rs C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\anstyle-wincon-0.2.0\src\lockable.rs C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\anstyle-wincon-0.2.0\src\stream.rs C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\anstyle-wincon-0.2.0\src\windows.rs
+
+C:\Users\benmt\CSC411\arith\rpeg\target\release\deps\anstyle_wincon-c687f2ede4f540d9.d: C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\anstyle-wincon-0.2.0\src\lib.rs C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\anstyle-wincon-0.2.0\src\console.rs C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\anstyle-wincon-0.2.0\src\lockable.rs C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\anstyle-wincon-0.2.0\src\stream.rs C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\anstyle-wincon-0.2.0\src\windows.rs
+
+C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\anstyle-wincon-0.2.0\src\lib.rs:
+C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\anstyle-wincon-0.2.0\src\console.rs:
+C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\anstyle-wincon-0.2.0\src\lockable.rs:
+C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\anstyle-wincon-0.2.0\src\stream.rs:
+C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\anstyle-wincon-0.2.0\src\windows.rs:

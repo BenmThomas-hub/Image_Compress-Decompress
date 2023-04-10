@@ -1,9 +1,8 @@
-mod readFile;
 mod compress;
 use crate::compress::*;
 use clap::Parser;
-use Array2::Array2;
-use csc411_image::*;
+//use Array2::Array2;
+//use csc411_image::*;
 mod decompress;
 use crate::decompress::*;
 //use csc411_arith::*;

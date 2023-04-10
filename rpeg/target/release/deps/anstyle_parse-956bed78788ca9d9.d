@@ -1,0 +1,11 @@
+C:\Users\benmt\CSC411\arith\rpeg\target\release\deps\anstyle_parse-956bed78788ca9d9.rmeta: C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\anstyle-parse-0.1.1\src\lib.rs C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\anstyle-parse-0.1.1\src\params.rs C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\anstyle-parse-0.1.1\src\state\mod.rs C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\anstyle-parse-0.1.1\src\state\definitions.rs C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\anstyle-parse-0.1.1\src\state\table.rs
+
+C:\Users\benmt\CSC411\arith\rpeg\target\release\deps\libanstyle_parse-956bed78788ca9d9.rlib: C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\anstyle-parse-0.1.1\src\lib.rs C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\anstyle-parse-0.1.1\src\params.rs C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\anstyle-parse-0.1.1\src\state\mod.rs C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\anstyle-parse-0.1.1\src\state\definitions.rs C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\anstyle-parse-0.1.1\src\state\table.rs
+
+C:\Users\benmt\CSC411\arith\rpeg\target\release\deps\anstyle_parse-956bed78788ca9d9.d: C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\anstyle-parse-0.1.1\src\lib.rs C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\anstyle-parse-0.1.1\src\params.rs C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\anstyle-parse-0.1.1\src\state\mod.rs C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\anstyle-parse-0.1.1\src\state\definitions.rs C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\anstyle-parse-0.1.1\src\state\table.rs
+
+C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\anstyle-parse-0.1.1\src\lib.rs:
+C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\anstyle-parse-0.1.1\src\params.rs:
+C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\anstyle-parse-0.1.1\src\state\mod.rs:
+C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\anstyle-parse-0.1.1\src\state\definitions.rs:
+C:\Users\benmt\.cargo\registry\src\github.com-1ecc6299db9ec823\anstyle-parse-0.1.1\src\state\table.rs:

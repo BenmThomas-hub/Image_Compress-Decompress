@@ -1,9 +1,10 @@
 use arith::compute::*;
-use Array2::Array2;
+use array2::Array2;
 use csc411_image::*;
 use csc411_rpegio;
 use bitpack::bitpack::*;
-
+//use std::fs::File;
+//use std::fs::write;
 
 pub fn compress_read (input: Option<String>) {
     //read
@@ -17,7 +18,7 @@ pub fn compress_read (input: Option<String>) {
     //pack 2x2 into word
     let mut compressed_data: Vec<[u8; 4]> = vec![];
     for chunk in vid_arr2.get_chunks() {
-        let coeff = GetCoeff(chunk);//compute word & get coeff
+        let coeff = get_coeff(chunk);//compute word & get coeff
         let bit = bitpacking(coeff);
         compressed_data.push(bit);
     }
@@ -25,10 +26,17 @@ pub fn compress_read (input: Option<String>) {
     //to keep width and height
     let width = vid_arr2.get_width();
     let height = vid_arr2.get_height();
-
+    //wrt(compressed_data);
     csc411_rpegio::output_rpeg_data(&compressed_data, width, height).unwrap();
 }
-
+/*
+fn wrt(data: Vec<[u8; 4]>) -> std::io::Result<()>{
+    //let mut file = File::create("test.rpeg")?;
+    //file::write(data)?;
+    write("test.rpeg", data.into_iter().collect::<[u8]>());
+    Ok(())
+}
+*/
 fn read(input: Option<String>) -> csc411_image::RgbImage {
     let copy = input.clone();
     let img = RgbImage::read(copy.as_deref()).unwrap();
@@ -102,20 +110,17 @@ fn rgb_to_rgbf(img: RgbImage) -> Array2<RgbFloat>{
 fn bitpacking (coeff: (f32, f32, f32, f32, usize, usize)) -> [u8; 4] {
 
     let mut word = 0 as u64;
-
-    let pBin = csc411_arith::index_of_chroma(coeff.4 as f32) as f32;
-    let pRin = csc411_arith::index_of_chroma(coeff.5 as f32) as f32;
     
-    let pR = newu(word, 4, 0, pRin as u64);
-    let pB = newu(word, 4, 4, pBin as u64);
-    let d = news(word, 5, 8, (coeff.3 * 103.33333) as i64);
-    let c = news(word, 5, 13, (coeff.2 * 103.33333) as i64);
-    let b = news(word, 5, 18, (coeff.1 * 103.33333) as i64);
-    let a = newu(word, 9, 23, (coeff.0*511.0) as u64);
-
-    word = pR.unwrap()+pB.unwrap()+d.unwrap()+c.unwrap()+b.unwrap()+a.unwrap();
-
+    //println!("{}, {}, {}, {}, {}, {}", coeff.0, coeff.1, coeff.2, coeff.3, coeff.4, coeff.5);
+    let p_r = newu(word, 4, 0, coeff.5 as u64);
+    let p_b = newu(word, 4, 4, coeff.4 as u64);
+    let d = news(word, 5, 8, (coeff.3 * 50.0) as i64);
+    let c = news(word, 5, 13, (coeff.2 * 50.0) as i64);
+    let b = news(word, 5, 18, (coeff.1 * 50.0) as i64);
+    let a = newu(word, 9, 23, (coeff.0 * 511.0) as u64);
+    //println!("{}, {}, {}, {}, {}, {}", a.unwrap(), b.unwrap(), c.unwrap(), d.unwrap(), pB.unwrap(), pR.unwrap());
+    word = p_r.unwrap()+p_b.unwrap()+d.unwrap()+c.unwrap()+b.unwrap()+a.unwrap();
     let bit: [u8; 4] = (word as u32).to_be_bytes();
-
+    //println!("{}, {:?}", word, bit);
     return bit;
 }

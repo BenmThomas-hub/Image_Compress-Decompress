@@ -1,5 +1,3 @@
-use std::convert::TryInto;
-
 
 /// Returns true iff the signed value `n` fits into `width` signed bits.
 /// 
@@ -19,7 +17,7 @@ pub fn fitss(n: i64, width: u64) -> bool {
 /// * `width`: the width of a bit field
 pub fn fitsu(n: u64, width: u64) -> bool {
     let max: u128 = 1 << width;
-    return max>=n as u128 && n>=0;
+    return max>=n as u128;
 }
 
 /// Retrieve a signed value from `word`, represented by `width` bits
@@ -60,9 +58,9 @@ pub fn getu(word: u64, width: u64, lsb: u64) -> u64 {
 /// * `value`: the unsigned value to place into that bit field
 pub fn newu(word: u64, width: u64, lsb: u64, value: u64) -> Option<u64> {
     if !fitsu(value, width){
-        Some(0)
+        None
     }else{
-        Some((64-lsb-width-1)|(word as u64))
+        Some((value << lsb)|word)
     }
 }
 
@@ -79,10 +77,10 @@ pub fn newu(word: u64, width: u64, lsb: u64, value: u64) -> Option<u64> {
 /// * `value`: the signed value to place into that bit field
 pub fn news(word: u64, width: u64, lsb: u64, value: i64) -> Option<u64> {
     if !fitss(value, width){
-        Some(0)
+        None
     }else{
         let base = ((1 as i128) << width) -1;
-        let num = (((value as i128) & base) << (64-width-lsb-1)) as u64;
-        Some(word|num)
+        let num = (((value as i128) & (base as i128)) << lsb) as u64;
+        Some(num|word)
     }
 }

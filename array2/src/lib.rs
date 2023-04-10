@@ -23,20 +23,20 @@ impl<T: Clone> Array2<T> {
         }
     }
     
-    pub fn get_chunks(&self) -> impl Iterator<Item = Vec<T>>{
+    pub fn get_chunks(&self) -> Vec<Vec<T>>{
         let mut chunks = vec![];
         for i in 0..self.height/2{
             for j in 0..self.width/2{
                 chunks.push(self.iterate_square(j*2, i*2));
             }
         }
-        return chunks.into_iter();
+        return chunks;
     }
     
     fn iterate_square(&self, col: usize, row:usize) -> Vec<T>{
         let mut pixels: Vec<T> = vec![];
-        for i in row..row+1{
-            for j in col..col+1{
+        for i in row..(row+2){
+            for j in col..(col+2){
                 pixels.push(self.get(i as usize, j as usize).clone());
             }
         }
