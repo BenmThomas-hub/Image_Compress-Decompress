@@ -1,4 +1,4 @@
-use arith::compute::*;
+use rpeg::compute::*;
 use array2::Array2;
 use csc411_image::*;
 use csc411_rpegio;

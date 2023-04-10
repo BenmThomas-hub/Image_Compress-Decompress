@@ -55,20 +55,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "arith"
-version = "0.1.0"
-dependencies = [
- "array2",
- "bitpack",
- "clamp",
- "clap",
- "csc411_arith",
- "csc411_image",
- "csc411_rpegio",
- "fs",
-]
-
-[[package]]
 name = "array2"
 version = "0.1.0"
 dependencies = [
@@ -569,6 +555,20 @@ dependencies = [
  "crossbeam-deque",
  "crossbeam-utils",
  "num_cpus",
+]
+
+[[package]]
+name = "rpeg"
+version = "0.1.0"
+dependencies = [
+ "array2",
+ "bitpack",
+ "clamp",
+ "clap",
+ "csc411_arith",
+ "csc411_image",
+ "csc411_rpegio",
+ "fs",
 ]
 
 [[package]]
