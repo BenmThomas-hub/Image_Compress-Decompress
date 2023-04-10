@@ -29,7 +29,7 @@ pub fn fitsu(n: u64, width: u64) -> bool {
 /// * `lsb`: the least-significant bit of the bit field
 pub fn gets(word: u64, width: u64, lsb: u64) -> i64 {
     if (word<<(64-lsb-width)>>(63)) as u64 == 1{
-        return (-1*2_i64.pow((width-1).try_into().unwrap()) as i64)+(word << (65-lsb-width) >> (64 - width-1+lsb)) as i64;
+        return (-1*2_i64.pow((width-1).try_into().unwrap()) as i64)+(word << (64-lsb-width+1) >> (64 - width+1-lsb) >> lsb) as i64;
     }
     return (word << (64-lsb-width) >> (64 - width)) as i64;
 }
@@ -127,5 +127,33 @@ mod tests {
     fn u_new(){
         let n: u64 = 36;
         assert_eq!(n, newu(0, 4, 2, 9).unwrap())
+    }
+    #[test]
+    fn multiple(){
+        let p_r = newu(0, 4, 0, 12);
+        let p_b = newu(0, 4, 4, 9);
+        let d = news(0, 5, 8, (0.3 * 50.0) as i64);
+        let c = news(0, 5, 13, (-0.3* 50.0) as i64);
+        let b = news(0, 5, 18, (0.0 * 50.0) as i64);
+        let a = newu(0, 9, 23, (0.75 * 511.0) as u64);
+        let word = p_b.unwrap() + p_r.unwrap() + d.unwrap() + c.unwrap() + b.unwrap() + a.unwrap();
+        println!("{}", word);
+        let bit = (word as u32).to_be_bytes();
+        println!("{:?}", bit);
+        let new_word = u32::from_be_bytes(bit) as u64;
+
+        //let a = getu(new_word, 9, 23) as f32;
+        //let b = gets(new_word, 5, 18) as f32;
+        //let c = gets(new_word, 5, 13) as f32;
+        //let d = gets(new_word, 5, 8) as f32;
+        //let p_b = getu(new_word, 4, 4)as usize;
+
+        let p_r = getu(new_word, 4, 0) as usize;
+        let p_b = getu(new_word, 4, 4)as usize;
+        let d = gets(new_word, 5, 8) as f32;
+        let c = gets(new_word, 5, 13) as f32;
+        let b = gets(new_word, 5, 18) as f32;
+         let a = gets(new_word, 9, 23) as f32;
+        println!("{}, {}, {}, {}, {}, {}", a, b, c, d, p_b, p_r);
     }
 }

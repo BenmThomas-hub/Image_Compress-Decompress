@@ -1,12 +1,12 @@
 use rpeg::compute::*;
 use array2::Array2;
 use csc411_image::*;
-use csc411_rpegio;
+//use csc411_rpegio;
 use bitpack::bitpack::*;
 //use std::fs::File;
 //use std::fs::write;
 
-pub fn compress_read (input: Option<String>) {
+pub fn compress_read (input: Option<String>) -> (Vec<[u8; 4]>, usize, usize) {
     //read
     let img = read(input);
     //i2f and trim
@@ -27,7 +27,8 @@ pub fn compress_read (input: Option<String>) {
     let width = vid_arr2.get_width();
     let height = vid_arr2.get_height();
     //wrt(compressed_data);
-    csc411_rpegio::output_rpeg_data(&compressed_data, width, height).unwrap();
+
+    return (compressed_data, width, height);
 }
 /*
 fn wrt(data: Vec<[u8; 4]>) -> std::io::Result<()>{

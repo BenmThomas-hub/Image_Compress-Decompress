@@ -46,8 +46,8 @@ impl<T: Clone> Array2<T> {
 
     pub fn set_square(&mut self, col: usize, row:usize, pixels: Vec<T>) -> (){
         let mut count = 0;
-        for i in row..row+1{
-            for j in col..col+1{
+        for i in row..(row+2){
+            for j in col..(col+2){
                 self.set_index(i as usize, j as usize, pixels[count].clone());
                 count += 1;
             }
