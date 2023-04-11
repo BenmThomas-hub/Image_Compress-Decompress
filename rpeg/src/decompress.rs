@@ -8,8 +8,8 @@ pub fn decompress_read (compressed_data: Vec<[u8; 4]>, width: usize, height: usi
     //read in the input
     //let (compressed_data, width, height) = csc411_rpegio::input_rpeg_data(input).unwrap();
 
-    let width = width * 2;
-    let height = height * 2;
+    let width = width;
+    let height = height;
 
 
     let mut vec2: Vec<VideoPixel> = vec![];
@@ -19,6 +19,9 @@ pub fn decompress_read (compressed_data: Vec<[u8; 4]>, width: usize, height: usi
         let y_vec = bitunpacking(word);
         //convert to 4 vid
         for i in 0..(y_vec.len() - 2) {
+            //println!("{}, {}, {}", y_vec[i], y_vec[4], y_vec[5]);
+
+
             let pixel = VideoPixel{y: y_vec[i], p_b: y_vec[4], p_r: y_vec[5]};
             vec2.push(pixel);
         }
@@ -30,8 +33,10 @@ pub fn decompress_read (compressed_data: Vec<[u8; 4]>, width: usize, height: usi
     let mut count = 0;
     for i in 0..height/2{
         for j in 0..width/2{
-            arr2_vid.set_square(j*2, i*2, vec2[count..count+4].to_vec());
-            count += 4;
+            if count != vec2.len(){
+                arr2_vid.set_square(j*2, i*2, vec2[count..count+4].to_vec());
+                count += 4;
+            }
         }
     }
 
@@ -42,26 +47,22 @@ pub fn decompress_read (compressed_data: Vec<[u8; 4]>, width: usize, height: usi
     write(arr2_rgbi);
 }
 
-fn write(rot: Array2<imgtype::Rgb>) {
+fn write(out: Array2<imgtype::Rgb>) {
     let mut vec: Vec<imgtype::Rgb> = vec![];
-    for pixel in rot.iter_row_major(){
+    for pixel in out.iter_row_major(){
         vec.push(pixel.2.clone());
     }
 
-    let ppm = RgbImage{pixels: vec, width: rot.get_width() as u32, height: rot.get_height() as u32, denominator: 255};
+    let ppm = RgbImage{pixels: vec, width: out.get_width() as u32, height: out.get_height() as u32, denominator: 255};
     ppm.write(std::option::Option::Some("output.ppm")).unwrap();
 }
 
 fn bitunpacking(word: [u8; 4]) -> Vec<f32> {
-    /*let mut update_word: [u8; 4] = [0, 0, 0, 0];
-    let mut count = 0;
-    for i in word{
-        update_word[count] = i.reverse_bits();
-        count += 1;
-    }
-    */
+    //println!("{:?}", word);
     //pull in opposite order
     let new_word = u32::from_be_bytes(word) as u64;
+    //println!("{}", new_word);
+    //println!("{:?}", word);
 
     let p_r = getu(new_word, 4, 0) as usize;
     let p_b = getu(new_word, 4, 4)as usize;
@@ -69,13 +70,17 @@ fn bitunpacking(word: [u8; 4]) -> Vec<f32> {
     let c = gets(new_word, 5, 13) as f32;
     let b = gets(new_word, 5, 18) as f32;
     let a = getu(new_word, 9, 23) as f32;
+    //println!("{}, {}, {}, {}, {}, {}", a,b,c,d,p_b,p_r);
+    if (p_b != 0) || (p_r != 0){
+    //println!("{}, {}", p_b, p_r);
+    }
 
-    csc411_arith::chroma_of_index(p_b);
-    csc411_arith::chroma_of_index(p_r);
+    let p_b_index = csc411_arith::chroma_of_index(p_b);
+    let p_r_index = csc411_arith::chroma_of_index(p_r);
 
-    let mut ys = get_ys((a/511.0, b/50.0, c/50.0, d/50.0));
-    ys.push(p_b as f32);
-    ys.push(p_r as f32);
-
+    let mut ys = get_ys((a/511.0, b/103.333, c/103.333, d/103.333));
+    ys.push(p_b_index as f32);
+    ys.push(p_r_index as f32);
+    //println!("{:?}", ys);
     return ys;
 }

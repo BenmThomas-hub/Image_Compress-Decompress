@@ -36,13 +36,17 @@ fn rgbto_video(pixel: RgbFloat) -> VideoPixel{
     let y: f32 = pixel.red*0.299 + 0.587*pixel.green + 0.114*pixel.blue;
     let p_b: f32 = pixel.red*-0.168736 + -0.331264*pixel.green + 0.5*pixel.blue;
     let p_r: f32 = pixel.red*0.5 + -0.418688*pixel.green + 0.081312*pixel.blue;
-    return VideoPixel{y:y, p_b:p_b, p_r:p_r};
+    //println!("{}, {}, {}", y, p_b, p_r);
+    return VideoPixel{y, p_b, p_r};
 }
 
 fn videoto_rgb(pixel: VideoPixel) -> imgtype::Rgb{
-    let r: u16 = (pixel.y + 1.402*pixel.p_r) as u16;
-    let g: u16 = (pixel.y + -0.344136*pixel.p_b + -0.714136*pixel.p_r) as u16;
-    let b: u16 = (pixel.y + 1.772*pixel.p_b) as u16;
+    let r: u16 = ((pixel.y + 1.402*pixel.p_r)*255.0) as u16;
+    let g: u16 = ((pixel.y + -0.344136*pixel.p_b + -0.714136*pixel.p_r) * 255.0) as u16;
+    let b: u16 = ((pixel.y + 1.772*pixel.p_b) * 255.0) as u16;
+    if (b > 255) || (r > 255) || (g > 255){ 
+    //println!("{}, {}, {}", r, g, b);
+    }
     return imgtype::Rgb{red:r, green:g, blue:b};
 }
 
@@ -58,9 +62,11 @@ pub fn get_coeff(pixels: Vec<VideoPixel>) -> (f32, f32, f32, f32, usize, usize){
 }
 
 pub fn get_ys(coefficients: (f32, f32, f32, f32)) -> Vec<f32>{
+    //println!("{},{},{},{}", coefficients.0, coefficients.1, coefficients.2, coefficients.3);
     let y1: f32 = coefficients.0 - coefficients.1 - coefficients.2 + coefficients.3;
     let y2: f32 = coefficients.0 - coefficients.1 + coefficients.2 - coefficients.3;
     let y3: f32 = coefficients.0 + coefficients.1 - coefficients.2 - coefficients.3;
     let y4: f32 = coefficients.0 + coefficients.1 + coefficients.2 + coefficients.3;
+    //println!("{},{},{},{}", y1, y2, y3, y4);
     return vec![y1, y2, y3, y4];
 }

@@ -33,7 +33,7 @@ fn main() {
     }
     else if  compress == true {
         let (output, width, height) = compress_read(fname);
-        csc411_rpegio::output_rpeg_data(&output, width, height).unwrap();
+        //csc411_rpegio::output_rpeg_data(&output, width, height).unwrap();
         decompress_read(output, width, height);
     }
 

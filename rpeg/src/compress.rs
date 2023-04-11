@@ -20,13 +20,13 @@ pub fn compress_read (input: Option<String>) -> (Vec<[u8; 4]>, usize, usize) {
     for chunk in vid_arr2.get_chunks() {
         let coeff = get_coeff(chunk); //compute word & get coeff
         let bit = bitpacking(coeff);
+        //println!("{:?}, {:?}", coeff, bit);
         compressed_data.push(bit);
     }
     
     //to keep width and height
     let width = vid_arr2.get_width();
     let height = vid_arr2.get_height();
-    //wrt(compressed_data);
 
     return (compressed_data, width, height);
 }
@@ -44,7 +44,8 @@ fn rgb_to_rgbf(img: RgbImage) -> Array2<RgbFloat>{
     
     //converts RGB integers to RGB floats
     for pixel in img.pixels {
-        let new_pix: RgbFloat = RgbFloat{red:(pixel.red as f32/255 as f32), green:(pixel.green as f32 / 255 as f32), blue:(pixel.blue as f32/ 255 as f32)};
+        //println!("{}, {} , {}", pixel.red, pixel.green, pixel.blue);
+        let new_pix: RgbFloat = RgbFloat{red:(pixel.red as f32 / 255.0), green:(pixel.green as f32 / 255.0), blue:(pixel.blue as f32 / 255.0)};
         rgb_f32_vec.push(new_pix);
     }
 
@@ -104,16 +105,17 @@ fn rgb_to_rgbf(img: RgbImage) -> Array2<RgbFloat>{
 fn bitpacking (coeff: (f32, f32, f32, f32, usize, usize)) -> [u8; 4] {
 
     let mut word = 0 as u64;
-    
     //println!("{}, {}, {}, {}, {}, {}", coeff.0, coeff.1, coeff.2, coeff.3, coeff.4, coeff.5);
-    let p_r = newu(word, 4, 0, coeff.5 as u64);
-    let p_b = newu(word, 4, 4, coeff.4 as u64);
-    let d = news(word, 5, 8, (coeff.3 * 50.0) as i64);
-    let c = news(word, 5, 13, (coeff.2 * 50.0) as i64);
-    let b = news(word, 5, 18, (coeff.1 * 50.0) as i64);
-    let a = newu(word, 9, 23, (coeff.0 * 511.0) as u64);
+    //println!("{},{}", coeff.4, coeff.5);
+    //println!("{}, {}, {}, {}, {}, {}", coeff.0*511.0, coeff.1*50.0, coeff.2*50.0, coeff.3*50.0, coeff.4, coeff.5);
+    let p_r = newu(word, 4, 0, coeff.5 as u64).unwrap();
+    let p_b = newu(word, 4, 4, coeff.4 as u64).unwrap();
+    let d = news(word, 5, 8, (coeff.3 * 50.0) as i64).unwrap();
+    let c = news(word, 5, 13, (coeff.2 * 50.0) as i64).unwrap();
+    let b = news(word, 5, 18, (coeff.1 * 50.0) as i64).unwrap();
+    let a = newu(word, 9, 23, (coeff.0 * 511.0) as u64).unwrap();
     //println!("{:?}, {:?}, {:?}, {:?}, {:?}, {:?}", a, b, c, d, p_b, p_r);
-    word = p_r.unwrap() | p_b.unwrap() | d.unwrap() | c.unwrap() | b.unwrap() | a.unwrap();
+    word = p_r | p_b | d | c | b | a;
     let bit: [u8; 4] = (word as u32).to_be_bytes();
     //println!("{}, {:?}", word, bit);
     return bit;

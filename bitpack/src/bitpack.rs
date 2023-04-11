@@ -126,7 +126,7 @@ mod tests {
     #[test]
     fn u_new(){
         let n: u64 = 36;
-        assert_eq!(n, newu(0, 4, 2, 9).unwrap())
+        assert_eq!(n, newu(0, 8, 23, 139).unwrap())
     }
     #[test]
     fn multiple(){
