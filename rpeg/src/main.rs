@@ -27,14 +27,13 @@ fn main() {
     let compress = args.compress;
     let fname = args.input;
 
+    //begins either the compress or decompress operations
     if  decompress == true {
         let (compressed_data, width, height) = csc411_rpegio::input_rpeg_data(fname).unwrap();
         decompress_read(compressed_data, width, height);
     }
     else if  compress == true {
         let (output, width, height) = compress_read(fname);
-        //csc411_rpegio::output_rpeg_data(&output, width, height).unwrap();
-        decompress_read(output, width, height);
+        csc411_rpegio::output_rpeg_data(&output, width, height).unwrap();
     }
-
 }
